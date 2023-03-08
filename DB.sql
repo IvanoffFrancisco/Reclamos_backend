@@ -1,0 +1,33 @@
+CREATE TABLE usuario(
+    idUsuario INT(11) NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(30) DEFAULT NULL,
+    apellido VARCHAR(30) DEFAULT NULL,
+    usuario VARCHAR(30) DEFAULT NULL,
+    password VARCHAR(30) DEFAULT NULL,
+    numeroLegajo INT(11) DEFAULT NULL,
+    tipoDeUsuario VARCHAR(30) DEFAULT NULL,
+    PRIMARY KEY (idUsuario)
+)
+
+CREATE TABLE reclamo(
+    idReclamo INT(11) NOT NULL AUTO_INCREMENT,
+    domicilio VARCHAR(30) DEFAULT NULL,
+    nombre VARCHAR(30) DEFAULT NULL,
+    apellido VARCHAR(30) DEFAULT NULL,
+    telefono VARCHAR(20) DEFAULT NULL,
+    dni INT(10) DEFAULT NULL,
+    fecha DATE DEFAULT NULL,
+    reclamo VARCHAR(500) DEFAULT NULL,
+    idUsuario INT(11) DEFAULT NULL,
+    actuacion_simple VARCHAR(30) DEFAULT NULL,
+    area VARCHAR(50) DEFAULT NULL,
+    estado VARCHAR(20) DEFAULT NULL,
+    coordenadasReclamo VARCHAR(70) DEFAULT NULL,
+    PRIMARY KEY(idReclamo),
+    FOREIGN KEY (idUsuario) REFERENCES usuario(idUsuario)
+)
+
+//MODIFICAR EL TIPO DE UNA COLUM
+ALTER TABLE `reclamo` CHANGE `domicilio` `domicilio` VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
+
+ALTER TABLE reclamo MODIFY COLUMN domicilio VARCHAR(150)
